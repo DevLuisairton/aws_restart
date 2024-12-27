@@ -1,55 +1,55 @@
-# Import the custom module to handle JSON files
+# Importe o módulo personalizado para lidar com arquivos JSON
 try:
-    import json_file_handler  # Try to import the json_file_handler module
+    import json_file_handler  
 except ModuleNotFoundError:
-    # Print an error message if the module is not found and exit the program
+    # Imprime uma mensagem de erro se o módulo não for encontrado e sai do programa
     print("Error: The 'json_file_handler' module is not found.")
     exit()
 
-# Retrieve the JSON data from the insulin.json file
+# Recupera os dados JSON do arquivo insulin.json
 data = json_file_handler.read_json_file(
     "insulin.json"
-)  # Call the read_json_file function
+)  
 
-# Check if data is retrieved successfully
+# Verifique se os dados foram recuperados com sucesso
 if data:
-    # Accessing specific insulin molecule sequences
+    # Acessando sequências específicas de moléculas de insulina
     b_insulin = data["molecules"][
         "bInsulin"
-    ]  # Retrieve the bInsulin sequence from JSON data
+    ]  
     a_insulin = data["molecules"][
         "aInsulin"
-    ]  # Retrieve the aInsulin sequence from JSON data
-    # Combine the b and a insulin sequences
-    insulin = b_insulin + a_insulin  # Concatenate bInsulin and aInsulin sequences
+    ]  
+   # Combine as sequências de insulina b e a
+    insulin = b_insulin + a_insulin  
 
-    # Accessing the actual molecular weight of insulin
+   # Acessando o peso molecular real da insulina
     molecular_weight_insulin_actual = data[
         "molecularWeightInsulinActual"
-    ]  # Retrieve the actual molecular weight
-    print("bInsulin: " + b_insulin)  # Print the bInsulin sequence
-    print("aInsulin: " + a_insulin)  # Print the aInsulin sequence
+    ]  
+    print("bInsulin: " + b_insulin)  
+    print("aInsulin: " + a_insulin)  
     print(
         "molecularWeightInsulinActual: " + str(molecular_weight_insulin_actual)
-    )  # Print the actual molecular weight
+    )  
 
-    # Getting a list of the amino acid weights
-    aa_weights = data["weights"]  # Retrieve the dictionary of amino acid weights
+    # Obtendo uma lista dos pesos de aminoácidos
+    aa_weights = data["weights"]  # Recupera o dicionário de pesos de aminoácidos
 
-    # Counting the number of each amino acid in the insulin sequence
+    # Contando o número de cada aminoácido na sequência da insulina
     aa_count_insulin = {x: float(insulin.upper().count(x)) for x in aa_weights.keys()}
-    # Create a dictionary where the keys are amino acids and the values are their counts in the insulin sequence
+    # Crie um dicionário onde as chaves são aminoácidos e os valores são suas contagens na sequência da insulina
 
-    # Calculating the total molecular weight of insulin based on amino acid counts and weights
+    # Cálculo do peso molecular total da insulina com base na contagem e peso de aminoácidos
     molecular_weight_insulin = sum(
         {x: (aa_count_insulin[x] * aa_weights[x]) for x in aa_weights.keys()}.values()
     )
-    # Multiply the count of each amino acid by its weight and sum the results to get the total molecular weight
+    # Multiplique a contagem de cada aminoácido pelo seu peso e some os resultados para obter o peso molecular total
 
-    # Printing the calculated rough molecular weight of insulin and percent error
+    # Imprimindo o peso molecular aproximado calculado da insulina e o erro percentual
     print(
         "The rough molecular weight of insulin: " + str(molecular_weight_insulin)
-    )  # Print the calculated molecular weight
+    )  
     print(
         "Percent error: "
         + str(
@@ -60,7 +60,7 @@ if data:
             * 100
         )
     )
-    # Calculate the percent error between the actual and calculated molecular weights and print it
+   # Calcule o erro percentual entre os pesos moleculares reais e calculados e imprima-o
 else:
-    # Print an error message if data retrieval fails
-    print("Error. Exiting program")  # Print an error message and exit the program
+    # Imprime uma mensagem de erro se a recuperação de dados falhar
+    print("Error. Exiting program")  

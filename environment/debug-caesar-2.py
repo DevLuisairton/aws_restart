@@ -1,28 +1,28 @@
-# Module Lab: Caesar Cipher Program Bug #2
+# Laboratório de módulo: Bug nº 2 do programa Caesar Cipher
 #
-# In a previous lab, you created a Caesar cipher program. This version of
-# the program is buggy. Use a debugger to find the bug and fix it.
+# Em um laboratório anterior, você criou um programa de cifra de César. Esta versão de
+# o programa está com bugs. Use um depurador para encontrar o bug e corrigi-lo.
 
 
-# Double the given alphabet
+# Duplique o alfabeto fornecido
 def getDoubleAlphabet(alphabet):
     doubleAlphabet = alphabet + alphabet
     return doubleAlphabet
 
 
-# Get a message to encrypt
+# Receba uma mensagem para criptografar
 def getMessage():
     stringToEncrypt = input("Please enter a message to encrypt: ")
     return stringToEncrypt
 
 
-# Get a cipher key
+# Obtenha uma chave de cifra
 def getCipherKey():
     shiftAmount = input("Please enter a key (whole number from 1-25): ")
     return shiftAmount
 
 
-# Encrypt message
+#Criptografar mensagem
 def encryptMessage(message, cipherKey, alphabet):
     encryptedMessage = ""
     uppercaseMessage = message.upper()
@@ -36,13 +36,13 @@ def encryptMessage(message, cipherKey, alphabet):
     return encryptedMessage
 
 
-# Decrypt message
+#Descriptografar mensagem
 def decryptMessage(message, cipherKey, alphabet):
     decryptKey = -1 * int(cipherKey)
     return encryptMessage(message, decryptKey, alphabet)
 
 
-# Main program logic
+# Lógica principal do programa
 def runCaesarCipherProgram():
     myAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     print(f"Alphabet: {myAlphabet}")
@@ -57,6 +57,4 @@ def runCaesarCipherProgram():
     myDecryptedMessage = decryptMessage(myEncryptedMessage, myCipherKey, myAlphabet2)
     print(f"Decrypted Message: {myDecryptedMessage}")
 
-
-# Main logic
 runCaesarCipherProgram()

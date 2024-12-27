@@ -1,28 +1,28 @@
-# Module Lab: Caesar Cipher Program Bug #1
+# Laboratório de módulo: Bug nº 1 do programa Caesar Cipher
 #
-# In a previous lab, you created a Caesar cipher program. This version of
-# the program is buggy. Use a debugger to find the bug and fix it.
+# Em um laboratório anterior, você criou um programa de cifra de César. Esta versão de
+# o programa está com bugs. Use um depurador para encontrar o bug e corrigi-lo.
 
 
-# Double the given alphabet
+# Duplique o alfabeto fornecido
 def getDoubleAlphabet(alphabet):
     doubleAlphabet = alphabet + alphabet
     return doubleAlphabet
 
 
-# Get a message to encrypt
+# Receba uma mensagem para criptografar
 def getMessage():
     stringToEncrypt = input("Please enter a message to encrypt: ")
     return stringToEncrypt
 
 
-# Get a cipher key
+# Obtenha uma chave de cifra
 def getCipherKey():
     shiftAmount = input("Please enter a key (whole number from 1-25): ")
-    return int(shiftAmount)  # Convert the input to an integer immediately
+    return int(shiftAmount)  
 
 
-# Encrypt message
+#Criptografar mensagem
 def encryptMessage(message, cipherKey, alphabet):
     encryptedMessage = ""
     uppercaseMessage = message.upper()
@@ -36,17 +36,17 @@ def encryptMessage(message, cipherKey, alphabet):
     return encryptedMessage
 
 
-# Error Explanation:The TypeError occurs because cipherKey is a string returned from getCipherKey, but arithmetic operations expect an integer.
-# Fix:Convert cipherKey to an integer inside the encryptMessage function.
+# Explicação do erro:O TypeError ocorre porque cipherKey é uma string retornada de getCipherKey, mas as operações aritméticas esperam um número inteiro.
+# Correção: Converta cipherKey em um número inteiro dentro da função encryptMessage.
 
 
-# Decrypt message
+#Descriptografar mensagem
 def decryptMessage(message, cipherKey, alphabet):
-    decryptKey = -1 * cipherKey  # cipherKey is already an integer now
+    decryptKey = -1 * cipherKey 
     return encryptMessage(message, decryptKey, alphabet)
 
 
-# Main program logic
+# Lógica principal do programa
 def runCaesarCipherProgram():
     myAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     print(f"Alphabet: {myAlphabet}")
@@ -61,6 +61,4 @@ def runCaesarCipherProgram():
     myDecryptedMessage = decryptMessage(myEncryptedMessage, myCipherKey, myAlphabet2)
     print(f"Decrypted Message: {myDecryptedMessage}")
 
-
-# Main logic
 runCaesarCipherProgram()

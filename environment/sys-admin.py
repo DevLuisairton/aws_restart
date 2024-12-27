@@ -1,28 +1,24 @@
-# Importing the os Module
+# Importando bibliotecas
 import os
-
-# Importing the subprocess Module
 import subprocess
-
-# Importing platform to identify the OS
 import platform
 
-# Determine the current operating system
+# Determine o sistema operacional atual
 current_os = platform.system()
 
-# Define the appropriate command for listing directory contents
+# Defineo comando apropriado para listar o conteúdo do diretório
 if current_os == "Windows":
     list_dir_command = ["cmd", "/c", "dir"]
 else:
     list_dir_command = ["ls"]
 
-# Running a directory listing command using os.system()
+# Executando um comando de listagem de diretórios usando os.system()
 os.system(" ".join(list_dir_command))
 
-# Running a directory listing command using subprocess.run()
+# Executando um comando de listagem de diretórios usando subprocess.run()
 subprocess.run(list_dir_command)
 
-# Using subprocess.run() with an additional argument for long listing format
+# Usando subprocess.run() com um argumento adicional para formato de listagem longa
 if current_os == "Windows":
     list_dir_long_command = ["cmd", "/c", "dir"]
 else:
@@ -30,7 +26,7 @@ else:
 
 subprocess.run(list_dir_long_command)
 
-# Using subprocess.run() with two additional arguments to list a specific file
+# Usando subprocess.run() com dois argumentos adicionais para listar um arquivo específico
 file_name = "README.md"
 if current_os == "Windows":
     list_file_command = ["cmd", "/c", "dir", file_name]
@@ -39,7 +35,7 @@ else:
 
 subprocess.run(list_file_command)
 
-# Running uname -a or equivalent command
+# Executando uname -a ou comando equivalente
 if current_os == "Windows":
     uname_command = ["cmd", "/c", "ver"]
 else:
@@ -47,7 +43,7 @@ else:
 
 subprocess.run(uname_command)
 
-# Running ps -x or equivalent command
+# Executando ps -x ou comando equivalente
 if current_os == "Windows":
     ps_command = ["cmd", "/c", "tasklist"]
 else:
@@ -55,6 +51,6 @@ else:
 
 subprocess.run(ps_command)
 
-# The os.system function executes the command as a string
-# The subprocess.run function takes a list of command arguments
-# The commands are conditionally defined to handle both Unix-like and Windows systems
+# A função os.system executa o comando como uma string
+# A função subprocess.run recebe uma lista de argumentos de comando
+# Os comandos são definidos condicionalmente para lidar com sistemas do tipo Unix e Windows

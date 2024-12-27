@@ -1,11 +1,11 @@
-# Connect to the Linux Host EC2 Instance
-# Create and Navigate to Your Working Directory
-# cd~
-# Write the Python Script
-# prime_numbers.py
+# Conecte-se à instância EC2 do host Linux
+# Crie e navegue até seu diretório de trabalho
+#cd~
+# Escreva o script Python
+#números_primos.py
 
 
-# Function to check if a number is prime
+#Função para verificar se um número é primo
 def is_prime(num):
     if num < 2:
         return False
@@ -15,18 +15,18 @@ def is_prime(num):
     return True
 
 
-# List to store prime numbers
+# Lista para armazenar números primos
 prime_numbers = []
 
-# Loop through numbers from 1 to 250 and check for primes
+# Percorra os números de 1 a 250 e verifique se há números primos
 for num in range(1, 251):
     if is_prime(num):
         prime_numbers.append(num)
 
-# File path to store results
+# Caminho do arquivo para armazenar os resultados
 file_path = "D:\AWS reStart Python\AWS reStrart Python Labs\results.txt"
 
-# Write prime numbers to the results file
+# Grava números primos no arquivo de resultados
 with open(file_path, "w") as file:
     for prime in prime_numbers:
         file.write(str(prime) + "\n")
@@ -34,8 +34,7 @@ with open(file_path, "w") as file:
 print(f"Prime numbers between 1 and 250 written to {file_path}")
 
 
-# Save the prime_numbers.py script and make it executable:
-# chmod +x prime_numbers.py
-# Run the script using Python 3:
-# python3 prime_numbers.py
-# cat results.txt
+# Salve o script prime_numbers.py e torne-o executável:
+# chmod +x números_primos.py
+# Execute o script usando Python 3:
+# python3 números primos.py

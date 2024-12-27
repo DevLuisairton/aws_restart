@@ -1,36 +1,35 @@
-# Creating the Main Program
-# Import the jsonFileHandler module to access the readJsonFile function.
+# Criando o Programa Principal
+# Importe o módulo jsonFileHandler para acessar a função readJsonFile.
 import json_File_Handler
 
-# Retrieve the JSON data from the insulin.json file.
+# Recupere os dados JSON do arquivo insulin.json.
 data = json_File_Handler.readJsonFile("files/insulin.json")
 
-# Check if data is retrieved successfully.
+# Verifique se os dados foram recuperados com sucesso.
 if data != "":
-    # Accessing specific insulin molecule sequences.
     bInsulin = data["molecules"]["bInsulin"]
     aInsulin = data["molecules"]["aInsulin"]
     insulin = bInsulin + aInsulin
 
-    # Accessing the actual molecular weight of insulin.
+    # Acessando o peso molecular real da insulina.
     molecularWeightInsulinActual = data["molecularWeightInsulinActual"]
     print("bInsulin: " + bInsulin)
     print("aInsulin: " + aInsulin)
     print("molecularWeightInsulinActual: " + str(molecularWeightInsulinActual))
 
-    # Calculating the molecular weight of insulin.
-    # Getting a list of the amino acid weights.
+    # Calculando o peso molecular da insulina.
+    # Obtendo uma lista dos pesos dos aminoácidos.
     aaWeights = data["weights"]
 
-    # Counting the number of each amino acid in the insulin sequence.
+    # Contando o número de cada aminoácido na sequência da insulina.
     aaCountInsulin = {x: float(insulin.upper().count(x)) for x in aaWeights.keys()}
 
-    # Calculating the total molecular weight of insulin based on amino acid counts and weights.
+    # Cálculo do peso molecular total da insulina com base na contagem e peso de aminoácidos.
     molecularWeightInsulin = sum(
         {x: (aaCountInsulin[x] * aaWeights[x]) for x in aaWeights.keys()}.values()
     )
 
-    # Printing the calculated rough molecular weight of insulin and percent error.
+    # Imprimindo o peso molecular aproximado calculado da insulina e o erro percentual.
     print("The rough molecular weight of insulin: " + str(molecularWeightInsulin))
     print(
         "Percent error: "

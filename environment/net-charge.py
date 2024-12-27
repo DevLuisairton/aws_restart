@@ -2,51 +2,51 @@
 # Python3.6
 # Coding: utf-8
 
-# Store the human preproinsulin sequence in a variable called preproinsulin:
-# This sequence is the initial form of insulin before it is processed into its active form.
+# Armazene a sequência da pré-pró-insulina humana em uma variável chamada pré-pró-insulina:
+# Esta sequência é a forma inicial da insulina antes de ser processada em sua forma ativa.
 preproInsulin = "malwmrllpllallalwgpdpaaafvnqhlcgshlvealylvcgergffytpktrreaedlqvgqvelgggpgagslqplalegslqkrgiveqcctsicslyqlenycn"
 
 # Store the remaining sequence elements of human insulin in variables:
 # These variables represent different parts of the insulin molecule.
-lsInsulin = "malwmrllpllallalwgpdpaaa"  # The signal sequence that is removed in the mature form.
-bInsulin = "fvnqhlcgshlvealylvcgergffytpkt"  # The B chain of insulin.
-aInsulin = "giveqcctsicslyqlenycn"  # The A chain of insulin.
-cInsulin = "rreaedlqvgqvelgggpgagslqplalegslqkr"  # The C-peptide that is removed in the mature form.
+lsInsulin = "malwmrllpllallalwgpdpaaa"  
+bInsulin = "fvnqhlcgshlvealylvcgergffytpkt"  
+aInsulin = "giveqcctsicslyqlenycn" 
+cInsulin = "rreaedlqvgqvelgggpgagslqplalegslqkr"  
 
-# Combine the B and A chains to get the full insulin molecule.
+# Combine as cadeias B e A para obter a molécula completa de insulina.
 insulin = bInsulin + aInsulin
 
-# Create a dictionary to store the pKa values of the amino acids that contribute to the net charge.
-# pKa values indicate the strength of an acid; the lower the pKa, the stronger the acid.
+# Crie um dicionário para armazenar os valores de pKa dos aminoácidos que contribuem para a carga líquida.
+# Os valores de pKa indicam a força de um ácido; quanto menor o pKa, mais forte é o ácido.
 pKR = {
-    "y": 10.07,  # Tyrosine
-    "c": 8.18,  # Cysteine
-    "k": 10.53,  # Lysine
-    "h": 6.00,  # Histidine
-    "r": 12.48,  # Arginine
-    "d": 3.65,  # Aspartic acid
-    "e": 4.25,  # Glutamic acid
+    "y": 10.07,  
+    "c": 8.18,  
+    "k": 10.53,  
+    "h": 6.00,
+    "r": 12.48,  
+    "d": 3.65,  
+    "e": 4.25, 
 }
 
 
-# Using count() to Count the Numbers of Each Amino Acid
-# Use the count() method to count the number of each amino acid in the insulin sequence.
-# The count() method returns the number of occurrences of a substring in a string.
+# Usando count() para contar o número de cada aminoácido
+# Use o método count() para contar o número de cada aminoácido na sequência da insulina.
+# O método count() retorna o número de ocorrências de uma substring em uma string.
 
-# Here, float() is used to ensure that the count is treated as a float for calculations.
-# This line of code creates a dictionary that maps each amino acid to its count in the insulin sequence.
+# Aqui, float() é usado para garantir que a contagem seja tratada como float para cálculos.
+# Esta linha de código cria um dicionário que mapeia cada aminoácido para sua contagem na sequência da insulina.
 seqCount = {x: float(insulin.count(x)) for x in ["y", "c", "k", "h", "r", "d", "e"]}
-# The dictionary comprehension iterates over a list of amino acids and counts their occurrences in the insulin sequence.
-# The resulting dictionary looks like this: {'y': count_of_y, 'c': count_of_c, ...}
+# A compreensão do dicionário percorre uma lista de aminoácidos e conta suas ocorrências na sequência da insulina.
+# O dicionário resultante fica assim: {'y': count_of_y, 'c': count_of_c, ...}
 
-# Writing the Net Charge Formula
-# Initialize the pH variable to zero. The pH scale typically ranges from 0 to 14.
+# Escrevendo a fórmula da cobrança líquida
+# Inicialize a variável pH para zero. A escala de pH normalmente varia de 0 a 14.
 pH = 0
 
-# Create a while loop that will run as long as pH is less than or equal to 14.
+# Crie um loop while que funcionará enquanto o pH for menor ou igual a 14.
 while pH <= 14:
-    # Calculate the net charge of the insulin molecule at the current pH.
-    # This formula sums the contributions of the positively and negatively charged amino acids.
+    # Calcule a carga líquida da molécula de insulina no pH atual.
+    # Esta fórmula soma as contribuições dos aminoácidos com carga positiva e negativa.
     netCharge = (
         +(
             sum(
@@ -56,7 +56,7 @@ while pH <= 14:
                 }.values()
             )
         )
-        # For positively charged amino acids (K, H, R), this part calculates their contributions to the net charge.
+        # Para aminoácidos com carga positiva (K, H, R), esta parte calcula suas contribuições para a carga líquida.
         - (
             sum(
                 {
@@ -65,12 +65,10 @@ while pH <= 14:
                 }.values()
             )
         )
-        # For negatively charged amino acids (Y, C, D, E), this part calculates their contributions to the net charge.
+        # Para aminoácidos com carga negativa (Y, C, D, E), esta parte calcula suas contribuições para a carga líquida.
     )
 
-    # Print the current pH and the calculated net charge.
-    # '{0:.2f}'.format(pH) formats the pH value to two decimal places for readability.
+    # Imprima o pH atual e a carga líquida calculada.
+    # '{0:.2f}'.format(pH) formata o valor do pH com duas casas decimais para facilitar a leitura.
     print("{0:.2f}".format(pH), netCharge)
-
-    # Increment the pH value by 1 to move to the next pH level.
     pH += 1

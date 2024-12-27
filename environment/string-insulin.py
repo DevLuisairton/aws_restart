@@ -8,23 +8,23 @@ preproInsulin = (
 )
 
 
-# Store the Remaining Sequence Elements of Human Insulin
-# Store the remaining sequence elements of human insulin in variables
+# Armazene os elementos restantes da sequência da insulina humana
+# Armazene os elementos restantes da sequência da insulina humana em variáveis
 lsInsulin = "malwmrllpllallalwgpdpaaa"
 bInsulin = "fvnqhlcgshlvealylvcgergffytpkt"
 aInsulin = "giveqcctsicslyqlenycn"
 cInsulin = "rreaedlqvgqvelgggpgagslqplalegslqkr"
 
-# Combine Insulin Sequences
+# Combine sequências de insulina
 insulin = bInsulin + aInsulin
 
-# Printing the sequence of human preproinsulin to console using successive print() commands
+# Imprimindo a sequência de pré-pró-insulina humana para consolar usando comandos print() sucessivos
 print("The sequence of human preproinsulin:")
 print(preproInsulin)
 
-# Calculating the molecular weight of insulin
-# Creating a list of the amino acid (AA) weights
-# Create a Dictionary of Amino Acid Weights
+# Calculando o peso molecular da insulina
+# Criando uma lista dos pesos de aminoácidos (AA)
+# Crie um dicionário de pesos de aminoácidos
 aaWeights = {
     "A": 89.09,
     "C": 121.16,
@@ -48,14 +48,14 @@ aaWeights = {
     "Y": 181.19,
 }
 
-# Count the Number of Each Amino Acid in the Insulin Sequence
+# Conte o número de cada aminoácido na sequência de insulina
 aaCountInsulin = {x: float(insulin.upper().count(x)) for x in aaWeights.keys()}
 
-# Calculate the Molecular Weight of Insulin
+# Calcule o peso molecular da insulina
 molecularWeightInsulin = sum(aaCountInsulin[x] * aaWeights[x] for x in aaWeights.keys())
 print("The rough molecular weight of insulin: " + str(molecularWeightInsulin))
 
-# Calculate the Error Percentage
+# Calcule a porcentagem de erro
 molecularWeightInsulinActual = 5807.63
 print(
     "Error percentage: "

@@ -1,4 +1,4 @@
-# block of code with errors to debug
+# bloco de código com erros para depurar
 Name = "John"
 print("Hello " + Name + ".")
 Age = 40
